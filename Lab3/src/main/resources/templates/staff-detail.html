@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin nhân viên</title>
+</head>
+<body>
+<div>
+    <img th:src="@{|/photo/${staff.photo}|}" style="height: 50px">
+    <hr>
+    Email: <b th:text="${staff.id}"></b>
+    <hr>
+    Họ và tên: <b th:text="${#strings.capitalizeWords(staff.fullname)}"></b>
+    <hr>
+    Giới tính: <b th:text="${staff.gender ? 'Nam' : 'Nữ'}"></b>
+    <hr>
+    Ngày sinh: <b th:text="${#dates.format(staff.birthdate, 'dd-MM-yyyy')}"></b>
+    <hr>
+    Cấp bậc:
+    <th:block th:switch="${staff.level}">
+        <b th:case="0">Uý</b>
+        <b th:case="1">Tá</b>
+        <b th:case="2">Tướng</b>
+        <b th:case="*">Chưa cấp</b>
+    </th:block>
+    <hr>
+    Salary: $<b
+        th:text="${#numbers.formatDecimal(staff.salary, 0, 'COMMA', 2, 'POINT')}"></b>
+    <hr>
+</div>
+<h1>--------------------------</h1>
+<div>
+    <img th:src="@{|/photo/${staff.photo}|}" style="height: 50px">
+    <hr>
+    Email: <b th:text="${staff.id}"></b>
+    <hr>
+    Họ và tên: <b th:text="${staff.fullname}"></b>
+    <hr>
+    Giới tính: <b th:text="${staff.gender ? 'Nam' : 'Nữ'}"></b>
+    <hr>
+    Ngày sinh: <b th:text="${#dates.format(staff.birthdate, 'dd-MM-yyyy')}"></b>
+    <hr>
+    Cấp bậc:
+    <th:block th:switch="${staff.level}">
+        <b th:case="0">Uý</b>
+        <b th:case="1">Tá</b>
+        <b th:case="2">Tướng</b>
+        <b th:case="*">Chưa cấp</b>
+    </th:block>
+    <hr>
+    Salary: $<b
+        th:text="${#numbers.formatDecimal(staff.salary, 0, 'COMMA', 2, 'POINT')}"></b>
+    <hr>
+</div>
+</body>
+</html>

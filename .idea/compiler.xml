@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for Lab8" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
+        </processorPath>
+        <module name="Lab1" />
+        <module name="Lab2" />
+        <module name="Lab3" />
+        <module name="Lab4" />
+        <module name="Lab5" />
+        <module name="Lab6" />
+        <module name="Lab7" />
+        <module name="Lab8" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Lab1" options="-parameters" />
+      <module name="Lab2" options="-parameters" />
+      <module name="Lab3" options="-parameters" />
+      <module name="Lab4" options="-parameters" />
+      <module name="Lab5" options="-parameters" />
+      <module name="Lab6" options="-parameters" />
+      <module name="Lab7" options="-parameters" />
+      <module name="Lab8" options="-parameters" />
+    </option>
+  </component>
+</project>

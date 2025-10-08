@@ -7,6 +7,7 @@ import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.util.Date;
 
@@ -35,6 +36,7 @@ public class Staff {
 
     @NotNull(message = "Lương không được để trống")
     @Min(value = 1000, message = "Lương tối thiểu là 1000")
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private Double salary;
 
     @Default

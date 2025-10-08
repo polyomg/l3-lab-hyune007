@@ -26,6 +26,6 @@ public class StaffController {
                 Staff.builder().id("TS00693").fullname("Nguyễn Trường Huy 5").level(5).build()
         );
         model.addAttribute("list", staffList);
-        return "list-control";
+        return "list-status";
     }
 }

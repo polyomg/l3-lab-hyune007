@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng - Danh sách sản phẩm</title>
+    <style>
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .cart-table th, .cart-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .cart-table th {
+            background-color: #f4f4f4;
+        }
+        .quantity-input {
+            width: 60px;
+            padding: 4px;
+        }
+        .action-links {
+            margin-top: 15px;
+        }
+        .action-links a {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .action-links a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<table class="cart-table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+        <th>Thao tác</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cart.items}" th:if="${item != null}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}">₫</td>
+
+        <td>
+            <form th:action="@{|/cart/update/${item.id}|}" method="post">
+                <input type="hidden" name="id" th:value="${item.id}">
+                <input type="number"
+                       name="qty"
+                       class="quantity-input"
+                       th:value="${item.quantity}"
+                       min="1"
+                       onchange="this.form.submit()">
+            </form>
+        </td>
+
+        <td th:text="${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT')}">₫</td>
+        <td>
+            <a th:href="@{|/cart/remove/${item.id}|}"
+               style="color: #dc3545; text-decoration: none;">
+                Xóa
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="action-links">
+    <a th:href="@{/cart/clear}">Xóa toàn bộ giỏ hàng</a>
+    <a th:href="@{/item/index}">Tiếp tục mua sắm</a>
+</div>
+</body>
+</html>

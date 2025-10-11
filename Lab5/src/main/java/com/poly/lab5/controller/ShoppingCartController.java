@@ -32,7 +32,7 @@ public class ShoppingCartController {
     }
 
     @RequestMapping("/cart/update/{id}")
-    public String update(@PathVariable("id") Integer id, @RequestParam("qty") Integer quantity) {
+    public String update(@PathVariable("id") Integer id, @RequestParam("quantity") Integer quantity) {
         cart.update(id, quantity);
         return "redirect:/cart/view";
     }

@@ -5,6 +5,7 @@ import com.poly.lab5.service.ParamService;
 import com.poly.lab5.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,12 +24,13 @@ public class AccountController {
     }
 
     @PostMapping("/account/login")
-    public String login2() {
+    public String login2(Model model) {
         String un = paramService.getString("username", "");
         String pw = paramService.getString("password", "");
         boolean rm = paramService.getBoolean("remember", false);
         if (un.equals("poly") && pw.equals("123")) {
             sessionService.set("username", un);
+            model.addAttribute("message", un + " đăng nhập thành công!");
         } else {
             sessionService.remove("username");
         }

@@ -15,6 +15,11 @@ import com.poly.lab5.entity.Item;
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private final Map<Integer, Item> cart = new HashMap<>();
 
+    /**
+     * Thêm một mặt hàng vào giỏ hàng hoặc tăng số lượng nếu đã tồn tại.
+     * @param id ID của mặt hàng cần thêm
+     * @return Mặt hàng đã được thêm hoặc cập nhật
+     */
     @Override
     public Item add(Integer id) {
         if (cart.containsKey(id)) {
@@ -34,11 +39,21 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    /**
+     * Xóa một mặt hàng khỏi giỏ hàng.
+     * @param id ID của mặt hàng cần xóa
+     */
     @Override
     public void remove(Integer id) {
         cart.remove(id);
     }
 
+    /**
+     * Cập nhật số lượng của một mặt hàng trong giỏ hàng.
+     * @param id ID của mặt hàng cần cập nhật
+     * @param quantity Số lượng mới
+     * @return Mặt hàng đã được cập nhật
+     */
     @Override
     public Item update(Integer id, int quantity) {
         if (cart.containsKey(id)) {
@@ -49,21 +64,36 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         throw new IllegalArgumentException("Item not found in the cart!");
     }
 
+    /**
+     * Xóa tất cả các mặt hàng khỏi giỏ hàng.
+     */
     @Override
     public void clear() {
         cart.clear();
     }
 
+    /**
+     * Lấy tất cả các mặt hàng trong giỏ hàng.
+     * @return Một Collection chứa các mặt hàng
+     */
     @Override
     public Collection<Item> getItems() {
         return cart.values();
     }
 
+    /**
+     * Lấy tổng số lượng các mặt hàng trong giỏ hàng.
+     * @return Tổng số lượng
+     */
     @Override
     public int getCount() {
         return cart.values().stream().mapToInt(Item::getQuantity).sum();
     }
 
+    /**
+     * Lấy tổng thành tiền của tất cả các mặt hàng trong giỏ hàng.
+     * @return Tổng thành tiền
+     */
     @Override
     public double getAmount() {
         return cart.values().stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum();

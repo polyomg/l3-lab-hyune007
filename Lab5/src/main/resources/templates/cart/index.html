@@ -60,7 +60,7 @@
             <form th:action="@{|/cart/update/${item.id}|}" method="post">
                 <input type="hidden" name="id" th:value="${item.id}">
                 <input type="number"
-                       name="qty"
+                       name="quantity"
                        class="quantity-input"
                        th:value="${item.quantity}"
                        min="1"
@@ -78,7 +78,7 @@
     </tr>
     </tbody>
 </table>
-
+<span th:text="${#numbers.formatDecimal(cart.getAmount(), 0, 'COMMA', 0, 'POINT')}">₫</span>
 <div class="action-links">
     <a th:href="@{/cart/clear}">Xóa toàn bộ giỏ hàng</a>
     <a th:href="@{/item/index}">Tiếp tục mua sắm</a>

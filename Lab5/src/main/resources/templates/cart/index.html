@@ -78,7 +78,8 @@
     </tr>
     </tbody>
 </table>
-<span th:text="${#numbers.formatDecimal(cart.getAmount(), 0, 'COMMA', 0, 'POINT')}">₫</span>
+<h1>Tổng tiền: <span th:text="${#numbers.formatDecimal(cart.getAmount(), 0, 'COMMA', 0, 'POINT')}"> VND</span></h1>
+<h1>Tổng số lượng SP: <span th:text="${cart.getCount()}"> cái</span></h1>
 <div class="action-links">
     <a th:href="@{/cart/clear}">Xóa toàn bộ giỏ hàng</a>
     <a th:href="@{/item/index}">Tiếp tục mua sắm</a>

@@ -7,6 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,7 +59,12 @@ public class ParamService {
             return null;
         }
         try {
-            File destinationFile = new File(path, file.getOriginalFilename());
+            // Make sure the directory exists
+            File dir = new File(req.getServletContext().getRealPath(path));
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File destinationFile = new File(dir, file.getOriginalFilename());
             file.transferTo(destinationFile);
             return destinationFile;
         } catch (IOException e) {

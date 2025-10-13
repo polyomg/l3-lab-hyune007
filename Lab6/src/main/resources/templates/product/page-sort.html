@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Pagination & Sort</title>
+</head>
+<body>
+
+<h3>PAGINATION & SORTING BY <th:block th:text="${field}"/></h3>
+
+<table border="1" style="width:100%">
+    <tr>
+        <th><a th:href="@{|/product/page-sort?p=${page.number}&field=id|}">Id</a></th>
+        <th><a th:href="@{|/product/page-sort?p=${page.number}&field=name|}">Name</a></th>
+        <th><a th:href="@{|/product/page-sort?p=${page.number}&field=price|}">Price</a></th>
+        <th><a th:href="@{|/product/page-sort?p=${page.number}&field=createDate|}">Date</a></th>
+    </tr>
+    <th:block th:each="item : ${page.content}">
+        <tr>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${#numbers.formatDecimal(item.price,0,'COMMA',2,'POINT')}"></td>
+            <td th:text="${#dates.format(item.createDate, 'yyyy-MM-dd')}"></td>
+        </tr>
+    </th:block>
+</table>
+
+<!-- Điều hướng phân trang -->
+<a th:href="@{|/product/page-sort?p=0&field=${field.toLowerCase()}|}">First</a>
+<a th:href="@{|/product/page-sort?p=${page.number - 1}&field=${field.toLowerCase()}|}">Previous</a>
+<a th:href="@{|/product/page-sort?p=${page.number + 1}&field=${field.toLowerCase()}|}">Next</a>
+<a th:href="@{|/product/page-sort?p=${page.totalPages - 1}&field=${field.toLowerCase()}|}">Last</a>
+
+<!-- Thông tin phân trang -->
+<ul>
+    <li>Số thực thể hiện tại: [[${page.numberOfElements}]]</li>
+    <li>Trang số: [[${page.number}]]</li>
+    <li>Kích thước trang: [[${page.size}]]</li>
+    <li>Tổng số thực thể: [[${page.totalElements}]]</li>
+    <li>Tổng số trang: [[${page.totalPages}]]</li>
+</ul>
+
+</body>
+</html>

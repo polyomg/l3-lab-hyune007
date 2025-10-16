@@ -26,7 +26,7 @@ public class ProductPageSortController {
 
         // Mỗi trang 5 sản phẩm, mặc định page=0
         int pageNumber = p.orElse(0);
-
+        int pageNumberReal = pageNumber + 1;
         // Sắp xếp giảm dần theo cột field, mặc định theo price
         String sortField = field.orElse("price");
         Sort sort = Sort.by(Sort.Direction.DESC, sortField);
@@ -36,7 +36,7 @@ public class ProductPageSortController {
 
         model.addAttribute("page", page);
         model.addAttribute("field", sortField.toUpperCase());
-
+        model.addAttribute ("current", pageNumberReal);
         return "product/page-sort";
     }
 }

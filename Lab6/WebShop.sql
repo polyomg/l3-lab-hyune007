@@ -51,8 +51,7 @@ CREATE TABLE Orders
     Id         BIGINT AUTO_INCREMENT PRIMARY KEY,
     Address    VARCHAR(255),
     CreateDate DATE DEFAULT (CURRENT_DATE),
-    Username   VARCHAR(50) NOT NULL,
-    FOREIGN KEY (Username) REFERENCES Accounts (Username)
+    Username   VARCHAR(50) NOT NULL
 );
 -- =============================================
 -- BẢNG ORDER DETAILS
@@ -63,9 +62,7 @@ CREATE TABLE OrderDetails
     Price     DECIMAL(18, 2),
     Quantity  INT CHECK (Quantity > 0),
     ProductId INT    NOT NULL,
-    OrderId   BIGINT NOT NULL,
-    FOREIGN KEY (ProductId) REFERENCES Products (Id),
-    FOREIGN KEY (OrderId) REFERENCES Orders (Id)
+    OrderId   BIGINT NOT NULL
 );
 -- =============================================
 -- DỮ LIỆU MẪU

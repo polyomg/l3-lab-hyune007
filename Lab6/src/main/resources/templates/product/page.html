@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Pagination</title>
+</head>
+<body>
+<h3>PAGINATION</h3>
+
+<table border="1" style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Date</th>
+    </tr>
+    <th:block th:each="item : ${page.content}">
+        <tr>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${#numbers.formatDecimal(item.price,0,'COMMA',2,'POINT')}"></td>
+            <td th:text="${#dates.format(item.createDate, 'yyyy-MM-dd')}"></td>
+        </tr>
+    </th:block>
+</table>
+
+<!-- Điều hướng trang -->
+<a th:href="@{|/product/page?p=0|}">First</a>
+<a th:href="@{|/product/page?p=${page.number - 1}|}">Previous</a>
+<a th:href="@{|/product/page?p=${page.number + 1}|}">Next</a>
+<a th:href="@{|/product/page?p=${page.totalPages - 1}|}">Last</a>
+
+<!-- Thông tin phân trang -->
+<ul>
+    <li>Số thực thể hiện tại: [[${page.numberOfElements}]]</li>
+    <li>Trang số: [[${page.number}]]</li>
+    <li>Kích thước trang: [[${page.size}]]</li>
+    <li>Tổng số thực thể: [[${page.totalElements}]]</li>
+    <li>Tổng số trang: [[${page.totalPages}]]</li>
+</ul>
+
+</body>
+</html>

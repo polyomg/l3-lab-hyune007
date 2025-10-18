@@ -1,0 +1,21 @@
+<form th:object="${item}" method="post">
+
+    <input th:field="*{id}" placeholder="Product Id?" readonly/>
+    <input th:field="*{name}" placeholder="Product Name?"/>
+    <input th:field="*{image}" placeholder="Image URL?"/>
+    <input th:field="*{price}" placeholder="Price?"/>
+
+    <select th:field="*{category.id}">
+        <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+    </select>
+
+    <label>
+        <input type="checkbox" th:field="*{available}"/> Available
+    </label>
+
+    <hr>
+    <button formaction="/product/create" type="submit">Create</button>
+    <button formaction="/product/update" type="submit">Update</button>
+    <a th:href="@{|/product/delete/${item.id}|}">Delete</a>
+    <a href="/product/index">Reset</a>
+</form>

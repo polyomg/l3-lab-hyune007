@@ -66,7 +66,7 @@ public class AccountController {
             model.addAttribute("photoName", savedFile.getName());
         } else {
             model.addAttribute("photoName", null);
-        }
+        }                                                                                                                               //huynt
 
         return "account/register-success";
     }

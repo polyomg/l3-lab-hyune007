@@ -15,7 +15,7 @@ public class StaffController {
         Staff staff = Staff.builder().id ("TS00689").fullname ("nguyễn trường huy").level (1).build ();
         model.addAttribute ("staff",staff);
         return "staff-detail";
-    }
+    }                                                                                                                       //huynt
     @GetMapping("/staff/list")
     public String list(Model model){
         List<Staff> staffList = Arrays.asList(

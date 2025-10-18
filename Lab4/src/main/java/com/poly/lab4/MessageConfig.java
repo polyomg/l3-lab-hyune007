@@ -23,7 +23,7 @@ public class MessageConfig implements WebMvcConfigurer {
         ms.setFallbackToSystemLocale(false);
         return ms;
     }
-
+                                                                                                                    //huynt
     @Bean("localeResolver")
     public LocaleResolver getLocaleResolver(){
         CookieLocaleResolver localeResolver = new CookieLocaleResolver();

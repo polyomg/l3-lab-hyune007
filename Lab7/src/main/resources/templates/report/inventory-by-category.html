@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Inventory by Category</title>
+</head>
+<body>
+<h2>Inventory Report by Category</h2>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Category</th>
+        <th>Total Price</th>
+        <th>Count</th>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.group.name}"></td>
+        <td th:text="${item.sum}"></td>
+        <td th:text="${item.count}"></td>
+    </tr>
+</table>
+</body>
+</html>

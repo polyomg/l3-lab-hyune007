@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Search with Pagination</title>
+</head>
+<body>
+<h2>Search Product by Name (Pagination)</h2>
+
+<form action="/product/search-and-page" method="get">
+    <input name="keywords" th:value="${keywords}" placeholder="Enter keyword...">
+    <button>Search</button>
+</form>
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th><th>Name</th><th>Price</th>
+    </tr>
+    <tr th:each="item : ${page.content}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+    </tr>
+</table>
+
+<a th:href="@{|/product/search-and-page?p=0|}">First</a>
+<a th:href="@{|/product/search-and-page?p=${page.number-1}|}">Prev</a>
+<a th:href="@{|/product/search-and-page?p=${page.number+1}|}">Next</a>
+<a th:href="@{|/product/search-and-page?p=${page.totalPages-1}|}">Last</a>
+
+<ul>
+    <li>Số sản phẩm hiện tại: [[${page.numberOfElements}]]</li>
+    <li>Trang số: [[${page.number}]]</li>
+    <li>Tổng số trang: [[${page.totalPages}]]</li>
+</ul>
+</body>
+</html>

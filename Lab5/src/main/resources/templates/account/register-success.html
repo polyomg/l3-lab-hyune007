@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Successful</title>
+</head>
+<body>
+    <h2>Registration Successful!</h2>
+    <p>Username: <span th:text="${username}"></span></p>
+    <p>Password: <span th:text="${password}"></span></p>
+    <p>Photo:</p>
+    <img th:if="${photoName != null}" th:src="@{'/uploads/' + ${photoName}}" width="200"/>
+    <p th:if="${photoName == null}">No photo uploaded.</p>
+    <br/>
+    <a th:href="@{/account/login}">Go to Login</a>
+</body>
+</html>
+

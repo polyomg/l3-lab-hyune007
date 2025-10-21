@@ -1,0 +1,24 @@
+<table border="1" style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Available</th>
+        <th>Action</th>
+    </tr>
+    <th:block th:each="item: ${items}">
+        <tr>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td><img th:src="${item.image}" style="width:50px"/></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.category.name}"></td>
+            <td th:text="${item.available} ? 'Yes' : 'No'"></td>
+            <td>
+                <a th:href="@{|/product/edit/${item.id}|}">Edit</a>
+            </td>
+        </tr>
+    </th:block>
+</table>

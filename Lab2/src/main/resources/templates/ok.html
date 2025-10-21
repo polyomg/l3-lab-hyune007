@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<form action="/ctrl/ok" method="post">
+    <button>OK 1</button>
+    <button formmethod="get">OK 2</button>
+    <button formaction="/ctrl/ok?x">OK 3</button>
+</form>
+
+<div class="mt-3">
+    <p><strong>Kết quả:</strong> <span th:text="${methodName}">?</span></p>
+</div>
+</body>
+</html>

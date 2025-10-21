@@ -20,6 +20,6 @@ public class Category implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    @ToString.Exclude // tránh vòng lặp khi in ra
+//    @ToString.Exclude
     private List<Product> products;
 }

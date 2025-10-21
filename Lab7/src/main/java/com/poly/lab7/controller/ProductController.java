@@ -31,6 +31,8 @@ public class ProductController {
         double minPrice = min.orElse(Double.MIN_VALUE);
         double maxPrice = max.orElse(Double.MAX_VALUE);
         List<Product> items = dao.findByPrice(minPrice, maxPrice);
+        // Số thự tự của mỗi sản phẩm
+        model.addAttribute("index", 0);
         model.addAttribute("items", items);
         return "product/search";
     }

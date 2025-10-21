@@ -14,9 +14,11 @@
 
 <table border="1" width="100%">
     <tr>
-        <th>ID</th><th>Name</th><th>Price</th><th>Create Date</th>
+        <th>STT</th><th>ID</th><th>Name</th><th>Price</th><th>Create Date</th>
     </tr>
-    <tr th:each="item : ${items}">
+    <tr th:each="item, iterStat : ${items}">
+
+        <td th:text="${iterStat.count}"></td>
         <td th:text="${item.id}"></td>
         <td th:text="${item.name}"></td>
         <td th:text="${item.price}"></td>
